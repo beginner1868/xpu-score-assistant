@@ -1,0 +1,89 @@
+#xpu-score-assistant { position: fixed; z-index: 2147483647; top: 48px; right: 16px; display:flex; flex-direction:column; width: min(640px, calc(100vw - 32px)); height: min(460px, calc(100vh - 64px)); min-width:min(480px, calc(100vw - 16px)); min-height:min(300px, calc(100vh - 16px)); max-width:calc(100vw - 16px); max-height:calc(100vh - 16px); overflow: hidden; color: #17212b; background: #fbfcfd; border: 1px solid #d9e1e8; border-radius: 10px; box-shadow: 0 16px 44px rgba(18, 34, 48, .18), 0 2px 8px rgba(18, 34, 48, .08); font: 12px/1.42 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; }
+#xpu-score-assistant * { box-sizing: border-box; }
+#xpu-score-assistant[hidden] { display:none !important; }
+#xpu-score-launcher { position:fixed; z-index:2147483647; top:42%; right:0; min-width:44px; min-height:40px; padding:7px 9px; border:1px solid #174d65; border-right:0; border-radius:8px 0 0 8px; background:#1e5d78; color:#fff; box-shadow:0 8px 20px rgba(18,34,48,.18); font:600 12px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif; cursor:pointer; }
+#xpu-score-launcher[hidden] { display:none !important; }
+#xpu-score-launcher:focus-visible, #xpu-score-assistant button:focus-visible, #xpu-score-assistant input:focus-visible, #xpu-score-assistant select:focus-visible, #xpu-score-reward-layer button:focus-visible { outline:2px solid #1e5d78; outline-offset:2px; }
+#xpu-score-assistant.xsa-dragging, #xpu-score-assistant.xsa-resizing { user-select:none; }
+#xpu-score-assistant.xsa-dragging { cursor:grabbing; }
+#xpu-score-assistant.xsa-resizing { cursor:nwse-resize; }
+#xpu-score-assistant .xsa-head { display:flex; justify-content:space-between; align-items:center; padding:12px 14px 8px; border-bottom:1px solid #e6ebef; cursor:grab; background:linear-gradient(180deg,#ffffff 0%,#f8fafb 100%); }
+#xpu-score-assistant .xsa-head:active { cursor:grabbing; }
+#xpu-score-assistant h2 { margin:0; font-size:18px; line-height:1.15; letter-spacing:0; font-weight:600; }
+#xpu-score-assistant .xsa-title-row { display:flex; align-items:baseline; gap:10px; min-width:0; }
+#xpu-score-assistant .xsa-author { color:#60717f; font-size:12px; line-height:1.25; font-weight:500; white-space:nowrap; }
+#xpu-score-assistant .xsa-reward-button { min-height:24px; padding:0 9px; border-color:#1e5d78; background:#1e5d78; color:#fff; font-size:12px; font-weight:500; }
+#xpu-score-assistant .xsa-icon { width:28px; height:28px; border:0; background:transparent; color:#71808c; font-size:22px; line-height:1; cursor:pointer; }
+#xpu-score-assistant .xsa-toolbar { display:flex; gap:8px; padding:10px 14px; background:#f3f6f8; }
+#xpu-score-assistant select, #xpu-score-assistant input, #xpu-score-assistant button { min-height:32px; border:1px solid #ccd6de; border-radius:6px; background:#fff; color:inherit; padding:0 10px; transition:background-color .16s ease,border-color .16s ease,color .16s ease,transform .16s ease; }
+#xpu-score-assistant select { max-width:150px; }
+#xpu-score-assistant input { flex:1; min-width:90px; }
+#xpu-score-assistant button { cursor:pointer; }
+#xpu-score-assistant button:active { transform:translateY(1px); }
+#xpu-score-assistant .xsa-refresh { background:#1e5d78; border-color:#1e5d78; color:#fff; }
+#xpu-score-assistant .xsa-check { position:relative; display:flex; align-items:center; gap:6px; min-height:32px; padding:0 10px; border:1px solid #ccd6de; border-radius:6px; background:#fff; color:#60717f; white-space:nowrap; cursor:pointer; transition:background-color .16s ease,border-color .16s ease,color .16s ease; }
+#xpu-score-assistant .xsa-check input { position:absolute; opacity:0; pointer-events:none; }
+#xpu-score-assistant .xsa-check::before { content:""; width:7px; height:7px; border-radius:50%; background:#b8c4cc; }
+#xpu-score-assistant .xsa-check:has(input:checked), #xpu-score-assistant .xsa-check.is-checked { border-color:#b33a32; background:#fff2f0; color:#a33a32; font-weight:600; }
+#xpu-score-assistant .xsa-check:has(input:checked)::before, #xpu-score-assistant .xsa-check.is-checked::before { background:#b33a32; box-shadow:0 0 0 3px rgba(179,58,50,.12); }
+#xpu-score-assistant .xsa-status { padding:8px 14px 0; color:#6d7c87; font-size:11px; }
+#xpu-score-assistant .xsa-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:8px 14px; background:#dfe6eb; border:1px solid #dfe6eb; }
+#xpu-score-assistant .xsa-stats div { padding:8px; background:#fff; }
+#xpu-score-assistant .xsa-stats b, #xpu-score-assistant .xsa-stats span { display:block; }
+#xpu-score-assistant .xsa-stats b { font-size:16px; font-variant-numeric:tabular-nums; }
+#xpu-score-assistant .xsa-stats span { color:#71808c; font-size:11px; }
+#xpu-score-assistant .xsa-table-wrap { flex:1; min-height:0; overflow:auto; }
+#xpu-score-assistant table { width:100%; border-collapse:collapse; table-layout:fixed; }
+#xpu-score-assistant th, #xpu-score-assistant td { padding:7px 14px; border-top:1px solid #e6ebef; text-align:left; white-space:nowrap; vertical-align:top; }
+#xpu-score-assistant th { position:sticky; top:0; background:#f7f9fa; color:#60717f; font-size:11px; font-weight:600; }
+#xpu-score-assistant th:nth-child(1), #xpu-score-assistant td:nth-child(1) { width:150px; }
+#xpu-score-assistant th:nth-child(2), #xpu-score-assistant td:nth-child(2) { width:116px; text-align:center; }
+#xpu-score-assistant th:nth-child(4), #xpu-score-assistant td:nth-child(4) { width:56px; text-align:center; }
+#xpu-score-assistant th:nth-child(5), #xpu-score-assistant td:nth-child(5) { width:56px; text-align:center; }
+#xpu-score-assistant td:first-child { white-space:normal; }
+#xpu-score-assistant td:nth-child(3) { white-space:normal; }
+#xpu-score-assistant td strong, #xpu-score-assistant td small { display:block; }
+#xpu-score-assistant td small { color:#81909b; font-size:11px; }
+#xpu-score-assistant .xsa-final { font-size:15px; line-height:1.25; white-space:normal; font-variant-numeric:tabular-nums; }
+#xpu-score-assistant .xsa-final.score-text { font-size:12px; font-weight:600; }
+#xpu-score-assistant .xsa-components { display:flex; flex-direction:column; align-items:stretch; gap:4px; width:100%; }
+#xpu-score-assistant .xsa-component { display:grid; grid-template-columns:88px 58px minmax(0,1fr); align-items:baseline; column-gap:8px; row-gap:2px; width:100%; max-width:100%; padding:4px 7px; border:1px solid #dce4e9; border-radius:5px; background:#f8fafb; }
+#xpu-score-assistant .xsa-component-main { display:contents; }
+#xpu-score-assistant .xsa-component-label { min-width:0; overflow:hidden; color:#60717f; font-size:11px; text-overflow:ellipsis; white-space:nowrap; }
+#xpu-score-assistant .xsa-component-main b { color:#17212b; font-size:13px; text-align:left; font-variant-numeric:tabular-nums; }
+#xpu-score-assistant .xsa-subcomponents { display:flex; flex-wrap:wrap; grid-column:3; gap:2px 8px; min-width:0; color:#687985; font-size:10px; line-height:1.35; }
+#xpu-score-assistant .xsa-subcomponents span { display:inline-flex; gap:2px; white-space:nowrap; }
+#xpu-score-assistant .xsa-subcomponents em { font-style:normal; color:#687985; }
+#xpu-score-assistant .xsa-subcomponents b { color:#34434e; font-variant-numeric:tabular-nums; }
+#xpu-score-assistant .xsa-muted { color:#8a979f; font-size:11px; }
+#xpu-score-assistant .pass, #xpu-score-assistant .ok { color:#176b4d; font-weight:600; }
+#xpu-score-assistant .fail, #xpu-score-assistant .bad { color:#b33a32; font-weight:600; }
+#xpu-score-assistant .pending { color:#a36a12; font-weight:600; }
+#xpu-score-assistant .xsa-badge { display:inline-block; padding:2px 7px; border-radius:10px; font-size:11px; }
+#xpu-score-assistant .xsa-badge.ok { background:#e5f3ec; color:#176b4d; }
+#xpu-score-assistant .xsa-badge.bad { background:#fbe9e7; color:#a33a32; }
+#xpu-score-assistant .xsa-badge.pending { background:#f7efdf; color:#8a5b12; }
+#xpu-score-assistant .xsa-empty { padding:28px; text-align:center; color:#82909b; }
+#xpu-score-assistant .xsa-resize { position:absolute; right:0; bottom:0; width:18px; height:18px; cursor:nwse-resize; touch-action:none; }
+#xpu-score-assistant .xsa-resize::after { content:""; position:absolute; right:5px; bottom:5px; width:8px; height:8px; border-right:2px solid #9aabb8; border-bottom:2px solid #9aabb8; opacity:.85; }
+@media (max-width: 640px) { #xpu-score-assistant { top:10px; right:10px; width:calc(100vw - 20px); } #xpu-score-assistant .xsa-toolbar { flex-wrap:wrap; } #xpu-score-assistant select { max-width:none; flex:1; } #xpu-score-assistant .xsa-stats { grid-template-columns:repeat(2,1fr); } }
+@media (max-width: 720px) {
+  #xpu-score-assistant .xsa-table-wrap { padding:0 12px 12px; }
+  #xpu-score-assistant table, #xpu-score-assistant tbody, #xpu-score-assistant tr, #xpu-score-assistant td { display:block; width:100%; }
+  #xpu-score-assistant thead { display:none; }
+  #xpu-score-assistant tr { margin-bottom:10px; border:1px solid #e1e8ed; border-radius:8px; overflow:hidden; background:#fff; }
+  #xpu-score-assistant th, #xpu-score-assistant td { padding:8px 10px; white-space:normal; }
+  #xpu-score-assistant td { border-top:0; }
+  #xpu-score-assistant td + td { border-top:1px solid #edf2f5; }
+  #xpu-score-assistant td:first-child, #xpu-score-assistant td:nth-child(3) { min-width:0; }
+  #xpu-score-assistant td:nth-child(2)::before { content:"总评"; }
+  #xpu-score-assistant td:nth-child(3)::before { content:"成绩构成"; }
+  #xpu-score-assistant td:nth-child(4)::before { content:"学分"; }
+  #xpu-score-assistant td:nth-child(5)::before { content:"绩点"; }
+  #xpu-score-assistant td:nth-child(n+2)::before { display:block; margin-bottom:2px; color:#81909b; font-size:10px; font-weight:600; }
+}
+#xpu-score-reward-layer { position:fixed; inset:0; z-index:2147483647; display:grid; place-items:center; padding:24px; background:rgba(15,23,42,.34); font:12px/1.42 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif; }
+#xpu-score-reward-layer[hidden] { display:none !important; }
+#xpu-score-reward-layer .xsa-reward-card { position:relative; width:min(360px, calc(100vw - 48px)); padding:14px; border:1px solid rgba(15,23,42,.10); border-radius:12px; background:#fff; box-shadow:0 24px 64px rgba(15,23,42,.24), 0 2px 8px rgba(15,23,42,.10); }
+#xpu-score-reward-layer .xsa-reward-close { position:absolute; top:10px; right:10px; width:28px; height:28px; border:1px solid rgba(15,23,42,.10); border-radius:8px; background:rgba(255,255,255,.92); color:#34434e; font-size:20px; line-height:1; cursor:pointer; }
+#xpu-score-reward-layer img { display:block; width:100%; height:auto; border-radius:8px; outline:1px solid rgba(0,0,0,.10); outline-offset:-1px; }

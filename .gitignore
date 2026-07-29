@@ -1,0 +1,20 @@
+# Chrome extension private key and local package
+*.pem
+*.crx
+
+# Local screenshots and temporary image captures
+{*.png
+*.tmp
+*.log
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Dependencies/build output, kept here for future project expansion
+node_modules/
+dist/
+build/
+coverage/
