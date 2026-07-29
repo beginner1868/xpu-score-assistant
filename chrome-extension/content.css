@@ -64,6 +64,7 @@
 #xpu-score-assistant .xsa-badge.bad { background:#fbe9e7; color:#a33a32; }
 #xpu-score-assistant .xsa-badge.pending { background:#f7efdf; color:#8a5b12; }
 #xpu-score-assistant .xsa-empty { padding:28px; text-align:center; color:#82909b; }
+#xpu-score-assistant .xsa-author-notice { flex:none; padding:6px 14px 7px; border-top:1px solid #e6ebef; background:#f8fafb; color:#81909b; font-size:10px; line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 #xpu-score-assistant .xsa-resize { position:absolute; right:0; bottom:0; width:18px; height:18px; cursor:nwse-resize; touch-action:none; }
 #xpu-score-assistant .xsa-resize::after { content:""; position:absolute; right:5px; bottom:5px; width:8px; height:8px; border-right:2px solid #9aabb8; border-bottom:2px solid #9aabb8; opacity:.85; }
 @media (max-width: 640px) { #xpu-score-assistant { top:10px; right:10px; width:calc(100vw - 20px); } #xpu-score-assistant .xsa-toolbar { flex-wrap:wrap; } #xpu-score-assistant select { max-width:none; flex:1; } #xpu-score-assistant .xsa-stats { grid-template-columns:repeat(2,1fr); } }
